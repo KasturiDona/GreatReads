@@ -43,11 +43,6 @@ ActiveRecord::Schema.define(version: 20150904072351) do
     t.integer "genre_id"
   end
 
-  create_table "books_reviews", id: false, force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "review_id"
-  end
-
   create_table "genres", force: :cascade do |t|
     t.text     "name"
     t.datetime "created_at", null: false
@@ -66,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150904072351) do
     t.text     "description"
     t.integer  "rating"
     t.integer  "user_id"
+    t.integer  "book_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

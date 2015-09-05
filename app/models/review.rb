@@ -6,11 +6,12 @@
 #  description :text
 #  rating      :integer
 #  user_id     :integer
+#  book_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Review < ActiveRecord::Base
 	belongs_to :user
-	has_and_belongs_to_many :books
+	belongs_to :book
 end

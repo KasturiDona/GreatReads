@@ -54,6 +54,11 @@ g2.books << b1 << b2 << b3 << b4
 g3.books << b3
 g4.books << b5
 
-rev1.books << b5 << b4 << b3 << b2 << b1
-rev2.books << b1 << b3 << b5
-rev3.books << b1 << b2
+rev1.update :book => b5 
+rev2.update :book => b2 
+rev3.update :book => b1 
+
+
+
+
+

@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
     	t.text :description
     	t.integer :rating
     	t.integer :user_id
+    	t.integer :book_id
       t.timestamps null: false
     end
   end
