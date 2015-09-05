@@ -1,0 +1,18 @@
+<%= form_for @reading do |f| %>
+
+<p>
+	<%= f.label :status %>
+	<%= f.text_field :status %>
+</p>
+<p>
+	<label>Book</label>
+	<%= f.select :book_id, Book.all.map { |book| [ book.name, book.id ] }, :include_blank => true %>
+</p>
+<p>
+	<label>User</label>
+	<%= f.select :user_id, User.all.map { |user| [ user.name, user.id ] }, :include_blank => true %>
+</p>
+
+<%= f.submit :class => 'submit' %>
+
+<% end %>

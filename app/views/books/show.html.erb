@@ -1,0 +1,28 @@
+
+<h2><%= @book.title %></h2>
+<% if @book.author %>
+		<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
+<% end %>
+
+<div class="triviabox">
+	<div class="thumbnail">
+		<div class="overlayInfo">
+			<p>Title: <%= @book.title %></p>
+			<p>Year: <%= @book.year %></p>
+			<p>Genre: <%= @book.publisher %></p>
+			<p>ISBN: <%= @book.isbn %></p>
+		</div>
+
+		<div class="thumbnailImage">
+			<%= image_tag @book.image, :class => 'feature' %>
+		</div>
+	</div>
+</div>
+
+<div class="showbooks">
+	<div class="controls">
+		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
+		<li><%= link_to 'Delete', @book, :method => 'delete', :data => { :confirm => 'Are you sure?' } %></li>
+		<li><%= link_to 'Back', books_path %></li>
+	</div>
+</div>

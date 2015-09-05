@@ -1,0 +1,16 @@
+<h2>Authors</h2>
+	<% @authors.each do |author| %>
+	<div class="index">
+		<div class="picture">
+			<%= image_tag author.image, :class => 'thumb' %>
+		</div>
+		<div class="info">
+			<p>Name: <%= link_to author.name, author %></p>
+			<p>Pen Name: <%= author.pen_name %></p>
+			<p>Nationality: <%= author.nationality %></p>
+			<p>Date of birth: <%= author.dob.strftime "%A, %e %B %Y" if author.dob %></p>
+			<p>Date of death: <%= author.dod.strftime "%A, %e %B %Y" if author.dod %></p>
+		</div>	
+	</div>
+		
+	<% end %>

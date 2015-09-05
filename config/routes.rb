@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+	
   get '/users/edit' => 'users#edit', :as => :edit_user
-  resources :users, :except => [:edit]
+  resources :authors, :books, :readings, :reviews, :genres, :users, :except => [:edit]
 
-  get '/loogin' => 'session#new'
+  get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   
