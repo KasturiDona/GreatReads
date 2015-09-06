@@ -25,6 +25,8 @@
 	<%= f.select :author_id, Author.all.map { |author| [ author.name, author.id ] }, :include_blank => true %>
 </p>
 
+<!-- need to add the genre field -->
+
 <%= f.submit :class => 'submit' %>
 
 <% end %>

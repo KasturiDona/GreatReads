@@ -6,7 +6,7 @@
 </p>
 <p>
 	<label>Book</label>
-	<%= f.select :book_id, Book.all.map { |book| [ book.name, book.id ] }, :include_blank => true %>
+	<%= f.select :book_id, Book.all.map { |book| [ book.title, book.id ] }, :include_blank => true %>
 </p>
 <p>
 	<label>User</label>

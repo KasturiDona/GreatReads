@@ -1,0 +1,29 @@
+<p><%= @user.name %></p>
+<div class="index">
+	<div class="picture">
+		<%= image_tag @user.image, :class => 'feature' %>
+	</div>
+	<div class="infoshow">
+		<p>Email: <%= @user.email %></p>
+		
+		<br>
+		<% @user.readings.each do |book| %>
+			<%= link_to(reading.status, reading) %>
+		<% end %>
+		<br>
+
+		<% @user.reviews.each do |book| %>
+			<%= link_to(review.description, review) %>
+		<% end %>
+		<br>
+
+		<!-- should have 2 links: add reviews and readings -->
+
+		<div class="controls">
+			<li><%= link_to 'Edit', edit_user_path(@user) %></li>
+			<li><%= link_to 'Delete', @user, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+			<li><%= link_to 'Back', users_path %></li>
+		</div>
+	</div>
+	
+</div>

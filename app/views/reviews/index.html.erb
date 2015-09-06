@@ -1,6 +1,7 @@
 <h2>Reviews</h2>
 <div class="index">
 	<% @reviews.each do |review| %>
-		<p>Reviews: <%= review.name %></p>
+		<p>Description: <%= review.description %></p>
+		<p>Rating: <%= review.rating %></p>
 	<% end %>
 </div>
