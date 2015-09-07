@@ -13,11 +13,16 @@ class ReadingsController < ApplicationController
 
 	def new
 		@reading = Reading.new
+		@book = Book.find params[:book_id]
 	end
 
 	def create
-		reading = Reading.create reading_params
-		redirect_to reading
+		book = Book.find params[:book_id]
+
+		reading = book.readings.find_or_create_by :user_id => @current_user.id
+		reading.update :status => params[:reading][:status]
+
+		redirect_to book
 	end
 
 	def edit

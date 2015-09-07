@@ -1,6 +1,6 @@
 <h2>Readings</h2>
 <div class="index">
 	<% @readings.each do |reading| %>
-		<p>Reading: <%= reading.status %></p>
+		<p>Reading: <%= link_to reading.status, reading %></p>
 	<% end %>
 </div>

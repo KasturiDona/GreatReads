@@ -1,4 +1,4 @@
-<%= form_for @review do |f| %>
+<%= form_for @review, :url => book_reviews_path( @book, @review ), :method => "post" do |f| %>
 
 <p>
 	<%= f.label :description %>
@@ -7,14 +7,6 @@
 <p>
 	<%= f.label :rating %>
 	<%= f.text_field :rating %>
-</p>
-<p>
-	<label>Book</label>
-	<%= f.select :book_id, Book.all.map { |book| [ book.title, book.id ] }, :include_blank => true %>
-</p>
-<p>
-	<label>User</label>
-	<%= f.select :user_id, User.all.map { |user| [ user.name, user.id ] }, :include_blank => true %>
 </p>
 
 <%= f.submit %>

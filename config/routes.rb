@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 	# get '/genres/edit' => 'genres#edit', :as => :edit_genre
 	# get '/readings/edit' => 'readings#edit', :as => :edit_reading
 	# get '/reviews/edit' => 'reviews#edit', :as => :edit_review
+
+	resources :books do
+		resources :reviews, :readings
+	end
+
 	resources :authors, :books, :readings, :reviews, :genres, :users #, :except => [:edit]
 
 	get '/login' => 'session#new'

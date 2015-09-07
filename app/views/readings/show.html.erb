@@ -1,4 +1,4 @@
-<p><%= @reading.status %></p>
+<!-- <p><%= @reading.status %></p> -->
 
 <% if @reading.book %>
 		<h2>Book: <%= link_to @reading.book.title, @reading.book %></h2>
@@ -12,5 +12,4 @@
 		<br><br>
 		<li><%= link_to 'Edit', edit_reading_path(@reading) %></li>
 		<li><%= link_to 'Delete', @reading, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
-		<li><%= link_to 'Back', reading_path %></li>
 	</div>

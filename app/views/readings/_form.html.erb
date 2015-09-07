@@ -1,16 +1,14 @@
-<%= form_for @reading do |f| %>
+<%= form_for @reading, :url => book_readings_path( @book, @reading ), :method => "post" do |f| %>
 
 <p>
-	<%= f.label :status %>
-	<%= f.text_field :status %>
-</p>
-<p>
-	<label>Book</label>
-	<%= f.select :book_id, Book.all.map { |book| [ book.title, book.id ] }, :include_blank => true %>
-</p>
-<p>
-	<label>User</label>
-	<%= f.select :user_id, User.all.map { |user| [ user.name, user.id ] }, :include_blank => true %>
+	<label>Reading Status</label>
+	
+	<% Reading.statuses.each do |status, code| %>
+		<p>
+			<%= label_tag status %>
+			<%= radio_button_tag "reading[status]", status %>
+		</p>
+	<% end %>
 </p>
 
 <%= f.submit :class => 'submit' %>

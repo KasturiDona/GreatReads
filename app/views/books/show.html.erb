@@ -1,17 +1,13 @@
 
 <h2><%= @book.title %></h2>
 <% if @book.author %>
-		<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
+	<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
-<!--<% if @book.genre %> 
-		<h2>Genre: <%= link_to @book.genre.name, @book.genre %></h2>
-<% end %> -->
 
-<ul>
-  <% @genres.each do |genre| %>
+<ul>Genre(s):
+  <% @book.genres.each do |genre| %>
       <li>
-        <%= check_box_tag 'book[genre][]', genre.id -%>
-        <%= h genre.name -%>
+        <%= genre.name %>
       </li>
   <% end %>
 </ul>
@@ -21,7 +17,7 @@
 		<div class="overlayInfo">
 			<p>Title: <%= @book.title %></p>
 			<p>Year: <%= @book.year %></p>
-			<p>Genre: <%= @book.publisher %></p>
+			<p>Publisher: <%= @book.publisher %></p>
 			<p>ISBN: <%= @book.isbn %></p>
 		</div>
 
@@ -31,12 +27,27 @@
 	</div>
 </div>
 
-<% @book.readings.each do |reading| %>
-	<%= (link_to reading.status, reading) %>
+<p>Readings: </p>
+<% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
+	<%= reading.status %>
 <% end %>
 
+<p>Reviews: </p>
 <% @book.reviews.each do |review| %>
-	<%= (link_to review.status, review) %>
+	<%= review.description %>
+	<%= review.rating %>
+<% end %>
+
+<% if @current_user.present? %>
+    <p><%= link_to 'Add New Reading', new_book_reading_path(@book) %></p>
+<% else %>    
+    <p><%= link_to 'Add New Review', login_path,  :data => { :confirm => "Please login" } %></p>
+<% end %>
+
+<% if @current_user.present? %>
+    <p><%= link_to 'Add New Review', new_book_review_path(@book) %></p>
+<% else %>    
+    <p><%= link_to 'Add New Reading', login_path,  :data => { :confirm => "Please login" } %></p>
 <% end %>
 
 <div class="showbooks">
@@ -44,7 +55,9 @@
 		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
 		<li><%= link_to 'Delete', @book, :method => 'delete', :data => { :confirm => 'Are you sure?' } %></li>
 		<li><%= link_to 'Back', books_path %></li>
-		<!-- should have a link to add/edit/delete reviews -->
-		<!-- should have a link to add/edit/delete readings -->
 	</div>
 </div>
+
+
+
+
