@@ -1,7 +1,13 @@
 <h2>Reviews</h2>
-<div class="index">
-	<% @reviews.each do |review| %>
-		<p>Description: <%= link_to review.description, review %></p>
-		<p>Rating: <%= review.rating %></p>
-	<% end %>
-</div>
+
+<% @current_user.reviews.each do |review| %>
+	<ul>
+		<li><%= link_to(review.book.title, review.book) %></li>
+		<% if review.rating.present? %>
+			<li>Rating: <%= review.rating %></li>
+		<% end %>
+		<li><%= review.description if review.description %></li>
+		<li><%= link_to 'Edit', edit_book_review_path(review.book, review) %></li>
+		<li><%= link_to 'Delete', review, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+	</ul>
+<% end %>

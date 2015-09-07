@@ -1,4 +1,4 @@
-<%= form_for @review, :url => book_reviews_path( @book, @review ), :method => "post" do |f| %>
+<%= form_for @review, :url => book_review_path( @review.book, @review ) do |f| %>
 
 <p>
 	<%= f.label :description %>

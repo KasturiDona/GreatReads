@@ -17,4 +17,11 @@ class Author < ActiveRecord::Base
 	has_many :books
 	has_many :genres, :through => :books
 	has_many :reviews, :through => :books
+	def display_name
+        if pen_name
+            pen_name
+        else
+            name
+        end
+    end
 end

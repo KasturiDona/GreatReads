@@ -22,7 +22,7 @@
 
 <p>
 	<label>Author</label>
-	<%= f.select :author_id, Author.all.map { |author| [ author.name, author.id ] }, :include_blank => true %>
+	<%= f.select :author_id, Author.all.map { |author| [ author.display.name, author.id ] }, :include_blank => true %>
 </p>
 
 <p>
@@ -31,7 +31,7 @@
 	<% Genre.all.each do |genre| %>
 		<p>
 			<%= label_tag genre.name %>
-			<%= check_box_tag "book[genre][]", genre.id %>
+			<%= check_box_tag "book[genre_id][]", genre.id, @book.genre_ids.include?(genre.id) %>
 		</p>
 	<% end %>
 </p>

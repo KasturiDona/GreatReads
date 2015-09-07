@@ -4,8 +4,11 @@
 		<p>Book: <%= link_to @genre.book.title, @genre.book %></p>
 <% end %>
 
+<% if @current_user.admin? %>
+
 	<div class="controls">
 		<br><br>
 		<li><%= link_to 'Edit', edit_genre_path(@genre) %></li>
 		<li><%= link_to 'Delete', @genre, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
 	</div>
+<% end %>

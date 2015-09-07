@@ -29,7 +29,7 @@
 
 <p>Readings: </p>
 <% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
-	<%= reading.status %>
+	<%= (reading.status).gsub("_", " ").capitalize %>
 <% end %>
 
 <p>Reviews: </p>
@@ -50,6 +50,8 @@
     <p><%= link_to 'Add New Reading', login_path,  :data => { :confirm => "Please login" } %></p>
 <% end %>
 
+<% if @current_user.admin? %>
+
 <div class="showbooks">
 	<div class="controls">
 		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
@@ -57,6 +59,7 @@
 		<li><%= link_to 'Back', books_path %></li>
 	</div>
 </div>
+<% end %>
 
 
 

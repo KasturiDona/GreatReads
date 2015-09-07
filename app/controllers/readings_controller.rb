@@ -1,10 +1,10 @@
 class ReadingsController < ApplicationController
 
-	# before_action :check_if_logged_in, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
+	before_action :check_if_logged_in, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
  #  	before_action :check_if_admin, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
 
 	def index
-		@readings = Reading.all
+		@readings = Reading.where( user_id: @current_user.id )
 	end
 
 	def show
@@ -46,9 +46,9 @@ class ReadingsController < ApplicationController
 		params.require(:reading).permit(:status, :book_id, :user_id)
 	end
 
-	# def check_if_logged_in
- #    	redirect_to root_path unless @current_user.present?
-	# end
+	def check_if_logged_in
+    	redirect_to root_path unless @current_user.present?
+	end
 
 	# def check_if_admin
 	#     redirect_to root_path unless @current_user.present? && @current_user.admin?
