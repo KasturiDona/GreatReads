@@ -1,4 +1,7 @@
 class AuthorsController < ApplicationController
+	before_action :check_if_logged_in, :only => [:index, :show]
+  	before_action :check_if_admin, :only => [:edit, :update, :destroy, :new, :create]
+
 	def index
 		@authors = Author.all
 	end
@@ -35,5 +38,13 @@ class AuthorsController < ApplicationController
 	private
 	def author_params
 		params.require(:author).permit(:name, :pen_name, :dob, :dod, :nationality, :image)
+	end
+
+	def check_if_logged_in
+    	redirect_to root_path unless @current_user.present?
+	end
+
+	def check_if_admin
+	    redirect_to root_path unless @current_user.present? && @current_user.admin?
 	end
 end

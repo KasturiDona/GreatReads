@@ -3,6 +3,18 @@
 <% if @book.author %>
 		<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
+<!--<% if @book.genre %> 
+		<h2>Genre: <%= link_to @book.genre.name, @book.genre %></h2>
+<% end %> -->
+
+<ul>
+  <% @genres.each do |genre| %>
+      <li>
+        <%= check_box_tag 'book[genre][]', genre.id -%>
+        <%= h genre.name -%>
+      </li>
+  <% end %>
+</ul>
 
 <div class="triviabox">
 	<div class="thumbnail">
@@ -19,12 +31,19 @@
 	</div>
 </div>
 
+<% @book.readings.each do |reading| %>
+	<%= (link_to reading.status, reading) %>
+<% end %>
+
+<% @book.reviews.each do |review| %>
+	<%= (link_to review.status, review) %>
+<% end %>
+
 <div class="showbooks">
 	<div class="controls">
 		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
 		<li><%= link_to 'Delete', @book, :method => 'delete', :data => { :confirm => 'Are you sure?' } %></li>
 		<li><%= link_to 'Back', books_path %></li>
-		<!-- should have a list of the reviews and readinds (user names) -->
 		<!-- should have a link to add/edit/delete reviews -->
 		<!-- should have a link to add/edit/delete readings -->
 	</div>

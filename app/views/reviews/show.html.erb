@@ -1,5 +1,14 @@
 <p><%= @review.description %></p>
 <p><%= @review.rating %></p>
+
+<% if @review.book %>
+		<h2>Book: <%= link_to @review.book.title, @review.book %></h2>
+<% end %>
+
+<% if @review.user %>
+		<h2>User name: <%= link_to @review.user.name, @review.user %></h2>
+<% end %>
+
 	<div class="controls">
 		<br><br>
 		<li><%= link_to 'Edit', edit_review_path(@review) %></li>

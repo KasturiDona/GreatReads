@@ -1,8 +1,12 @@
 <h2><%= @genre.name %></h2>
+
+<% if @genre.book %>
+		<p>Book: <%= link_to @genre.book.title, @genre.book %></p>
+<% end %>
+
 	<div class="controls">
 		<br><br>
 		<li><%= link_to 'Edit', edit_genre_path(@genre) %></li>
 		<li><%= link_to 'Delete', @genre, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
 		<li><%= link_to 'Back', genres_path %></li>
-		<!-- should have a list of books in the genre -->
 	</div>

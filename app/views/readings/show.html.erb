@@ -1,4 +1,13 @@
 <p><%= @reading.status %></p>
+
+<% if @reading.book %>
+		<h2>Book: <%= link_to @reading.book.title, @reading.book %></h2>
+<% end %>
+
+<% if @reading.user %>
+		<h2>User name: <%= link_to @reading.user.name, @reading.user %></h2>
+<% end %>
+
 	<div class="controls">
 		<br><br>
 		<li><%= link_to 'Edit', edit_reading_path(@reading) %></li>

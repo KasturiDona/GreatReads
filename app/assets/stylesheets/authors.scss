@@ -1,3 +1,120 @@
-// Place all the styles related to the authors controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+html {
+	background-image: url("http://i.imgur.com/ijo8KeK.jpg");
+	background-size: cover;
+	font-family: 'Architects Daughter', cursive;
+}
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 20px;
+	border-radius: 5px;
+}
+
+input {
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+input:hover {
+	background-color: gray;
+}
+
+label {
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.submit {
+	position: relative;
+	margin: 20px;
+	margin-left: 100px;
+	padding: 10px;
+}
+
+.index {
+	padding: 15px;
+	margin: 10px;
+}
+
+.showbooks {
+	padding: 15px;
+	margin: 10px;
+}
+
+.picture {
+	position: absolute;
+}
+
+.info {
+	position: relative;
+	left: 200px;
+	padding: 10px;
+}
+
+.infoshow {
+	position: relative;
+	left: 400px;
+	padding: 10px;
+}
+
+.book {
+	padding: 20px;
+}
+
+nav {
+	text-align: right;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	font-size: 1.2em;
+	transition: font-size 0.6s ease;
+}
+
+ul {
+	list-style: none;
+
+}
+
+li {
+	display: inline;
+	margin: 10px;
+}
+
+img {
+	border: 1px solid black;
+}
+
+.thumb {
+	max-width: 8em;
+	border-radius: 50%;
+}
+
+.feature {
+	width: 100%;
+	border-radius: 5px;
+}
+
+label {
+	min-width: 120px;
+	display: inline-block;
+	text-align: right;
+}

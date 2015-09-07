@@ -25,7 +25,16 @@
 	<%= f.select :author_id, Author.all.map { |author| [ author.name, author.id ] }, :include_blank => true %>
 </p>
 
-<!-- need to add the genre field -->
+<p>
+	<label>Genre</label>
+	<%#= f.select :genre_id, Genre.all.map { |genre| [ genre.name, genre.id ] }, :include_blank => true %>
+	<% Genre.all.each do |genre| %>
+		<p>
+			<%= label_tag genre.name %>
+			<%= check_box_tag "book[genre][]", genre.id %>
+		</p>
+	<% end %>
+</p>
 
 <%= f.submit :class => 'submit' %>
 

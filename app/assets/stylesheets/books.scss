@@ -1,3 +1,55 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*<p><%= image_tag @book.image, :class => 'feature' %></p>
+	
+<% if @book.author %>
+	<p>Author: <%= link_to @book.author.name, @book.author %></p>
+<% end %>
+<p>Title: <%= @book.title %></p>
+<p>Year: <%= @book.year %></p>
+<p>Genre: <%= @book.genre %></p>*/
+
+.triviabox {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.thumbnail {
+	position: relative;
+	width: 280px;
+	margin: 0 auto;
+}
+
+.thumbnailImage {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	transition: all 0.6s ease;
+}
+
+.thumbnail .overlayInfo {
+	opacity: 0;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 10px;
+	left: 0;
+	right: 0;
+	transition: opacity 0.6s ease;
+}
+
+.thumbnail .thumbnailImage img {
+	transition:  all 0.6s ease;
+}
+
+.thumbnail:hover .overlayInfo {
+	opacity: 1;
+}
+
+.thumbnail:hover .thumbnailImage {
+	width: 100%;
+}
+
+.thumbnail:hover .thumbnailImage img {
+	width: 100%;
+}

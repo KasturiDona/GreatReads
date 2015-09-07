@@ -36,6 +36,7 @@ read5 = Reading.create :status => 4
 User.destroy_all
 u1 = User.create :name => 'Abhishek', :email => "abhishek@gmail.com", :password => 'chicken', :password_confirmation => 'chicken'
 u2 = User.create :name => 'Arnov', :email => "arnov@gmail.com", :password => 'goldfish', :password_confirmation => 'goldfish'
+u3 = User.create :name => 'Kasturi', :email => "kasturi@gmail.com", :password => 'sparrow', :password_confirmation => 'sparrow', :admin => true
 
 a1.books << b1
 a2.books << b2

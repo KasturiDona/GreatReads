@@ -9,6 +9,7 @@
 		<br>
 		<% @user.readings.each do |book| %>
 			<%= link_to(reading.status, reading) %>
+			<%= link_to(reading.book.title, reading.book) %>
 		<% end %>
 		<br>
 
@@ -23,6 +24,10 @@
 			<li><%= link_to 'Edit', edit_user_path(@user) %></li>
 			<li><%= link_to 'Delete', @user, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
 			<li><%= link_to 'Back', users_path %></li>
+
+			<li><%= link_to 'Review a book', new_review_path %></li>
+			<li><%= link_to 'Read a book', new_reading_path %></li>
+
 		</div>
 	</div>
 	
