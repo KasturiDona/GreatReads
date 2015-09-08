@@ -1,6 +1,17 @@
 <h2>Books</h2>
-<div class="index">
-	<% @books.each do |book| %>
-		<%= link_to(image_tag(book.image, :class => 'thumb'), book) %>
-	<% end %>
+
+<% @books.each do |book| %>
+	
+<div class="triviaboxindex">
+	<div class="thumbnailindex">
+		<div class="overlayInfoindex">
+			<%= link_to book.title, book %>
+		</div>
+
+		<div class="thumbnailImageindex">
+			<%= image_tag(book.image, :class => 'thumb') %>
+		</div>
+	</div>
 </div>
+<% end %>
+

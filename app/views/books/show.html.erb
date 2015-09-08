@@ -4,22 +4,7 @@
 	<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
 
-<div class="middle">
-	<ul class="main"><span class="black">Readings</span>
-		<% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
-			<li><%= (reading.status).gsub("_", " ").capitalize %></li>
-		<% end %>
-	</ul>
-	<ul class="main"><span class="black">Reviews</span>
-		<% @book.reviews.each do |review| %>
-			<li><%= review.description %>
-			<% if review.rating %>
-				( Rating:<%=  review.rating %> )
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
-</div>
+
 
 <div class="links">
 	<% if @current_user.present? %>
@@ -54,20 +39,49 @@
 	</div>
 </div>
 
+<div id="accordion">
 
+	<% if @book.description.present? %>
+		<h3>Description</h3>
+		<p><%= (@book.description).gsub("<br><br>", " ") %></p>
+	<% end %>
 
+	<!-- <div class="middle"> -->
+		<% if @book.readings.present? %>
+			<h3>Readings</h3>
+			<ul>
+				<% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
+					<li><%= (reading.status).gsub("_", " ").capitalize %></li>
+				<% end %>
+			</ul>
+		<% end %>
+		<% if @book.reviews.present? %>
+			<h3>Reviews</h3>
+			<% @book.reviews.each do |review| %>
+				<ul>User: <%= review.user_id %>
+					<li><%= review.description %>
+						<% if review.rating %>
+							( Rating:<%=  review.rating %> )
+						<% end %>
+					</li>
+				</ul>
+			<% end %>
+		<% end %>
+	<!-- </div> -->
 
+</div>
 
 <% if @current_user.admin? %>
-
-<div class="showbooks">
 	<div class="controls">
 		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
 		<li><%= link_to 'Delete', @book, :method => 'delete', :data => { :confirm => 'Are you sure?' } %></li>
 		<li><%= link_to 'Back', books_path %></li>
 	</div>
-</div>
 <% end %>
+
+<script>
+	$("#accordion").accordion();
+</script>
 
 
 

@@ -1,23 +1,24 @@
+<div class="form">
 <%= form_for @book do |f| %>
 <p>
 	<%= f.label :title %>
-	<%= f.text_field :title %>
+	<%= f.text_field :title, placeholder: "Book title", :required => true %>
 </p>
 <p>
 	<%= f.label :publisher %>
-	<%= f.text_field :publisher %>
+	<%= f.text_field :publisher, placeholder: "Publisher" %>
 </p>
 <p>
 	<%= f.label :year %>
-	<%= f.text_field :year %>
+	<%= f.text_field :year, placeholder: "Year of publish" %>
 </p>
 <p>
 	<%= f.label :image %>
-	<%= f.url_field :image %>
+	<%= f.url_field :image, placeholder: "Image URL" %>
 </p>
 <p>
 	<%= f.label :isbn %>
-	<%= f.text_field :isbn %>
+	<%= f.text_field :isbn, placeholder: "ISBN number" %>
 </p>
 
 <p>
@@ -29,13 +30,16 @@
 	<label>Genre</label>
 	<%#= f.select :genre_id, Genre.all.map { |genre| [ genre.name, genre.id ] }, :include_blank => true %>
 	<% Genre.all.each do |genre| %>
+	<div class="genre">
 		<p>
 			<%= label_tag genre.name %>
 			<%= check_box_tag "book[genre_id][]", genre.id, @book.genre_ids.include?(genre.id) %>
 		</p>
+	</div>
 	<% end %>
 </p>
 
 <%= f.submit :class => 'submit' %>
 
 <% end %>
+<div class="form">

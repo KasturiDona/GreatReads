@@ -1,16 +1,20 @@
+<div class="form">
 <%= form_for @review, :url => @url do |f| %>
 
 <p>
 	<%= f.label :description %>
-	<%= f.text_field :description %>
+	<%= f.text_area :description, placeholder: "Add a review" %>
 </p>
 <p>
 	<%= f.label :rating %>
-	<%= f.number_field :rating, in: 1..5 %>
+	<%= f.number_field :rating, in: 1..5, placeholder: "Rate the book" %>
 </p>
 
-<%= f.submit %>
+<div class="button">
+
+<%= f.submit :class => 'submit'%>
+</div>
 
 <% end %>
 
-<!--  -->
+</div>

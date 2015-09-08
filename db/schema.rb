@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150904072351) do
     t.text     "year"
     t.text     "image"
     t.text     "isbn"
+    t.text     "description"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,8 +1,9 @@
 <h2>New Book</h2>
+<div class="form">
 <%= form_for @book do |f| %>
 <p>
 	<%= f.label :title %>
-	<%= f.text_field :title %>
+	<%= f.text_field :title, placeholder: "Book title", :required => true %>
 </p>
 
 <p>
@@ -10,5 +11,6 @@
 	<%= f.select :author_id, Author.all.map { |author| [ author.name, author.id ] }, :include_blank => true %>
 </p>
 
-<%= f.submit %>
+<%= f.submit :class => 'submit' %>
 <% end %>
+<div class="form">

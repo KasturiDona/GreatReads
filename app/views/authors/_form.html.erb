@@ -1,12 +1,13 @@
+<div class="form">
 <%= form_for @author do |f| %>
 
 	<p>
 		<%= f.label :name %>
-		<%= f.text_field :name %>
+		<%= f.text_field :name, placeholder: "Name of the Author", :required => true %>
 	</p>
 	<p>
 		<%= f.label :pen_name %>
-		<%= f.text_field :pen_name %>
+		<%= f.text_field :pen_name, placeholder: "Pen name if any" %>
 	</p>
 	<p>
 		<%= f.label :dob, 'Date of birth' %>
@@ -18,13 +19,14 @@
 	</p>
 	<p>
 		<%= f.label :nationality %>
-		<%= f.text_field :nationality %>
+		<%= f.text_field :nationality, placeholder: "Nationality" %>
 	</p>
 	<p>
 		<%= f.label :image %>
-		<%= f.url_field :image %>
+		<%= f.url_field :image, placeholder: "Image URL" %>
 	</p>
 
 	<%= f.submit :class => 'submit' %>
 
 <% end %>
+<div class="form">

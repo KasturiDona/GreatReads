@@ -1,7 +1,23 @@
 <h2>Reviews</h2>
-<% if (@current_user || @current_user.admin?) %>
+<% if @current_user %>
 
 	<% @current_user.reviews.each do |review| %>
+		<ul>
+			<li>Book: <%= link_to(review.book.title, review.book) %></li>
+			<% if review.rating.present? %>
+				<li>Rating: <%= review.rating %></li>
+			<% end %>
+			<li>Description: <%= review.description if review.description %></li>
+			<li><%= link_to 'Edit', edit_book_review_path(review.book, review) %></li>
+			<li><%= link_to 'Delete', book_review_path(review.book.id, review.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+		</ul>
+	<% end %>
+
+<% end %>
+
+<% if @current_user.admin? %>
+
+	<% @reviews.each do |review| %>
 		<ul>
 			<li>Book: <%= link_to(review.book.title, review.book) %></li>
 			<% if review.rating.present? %>

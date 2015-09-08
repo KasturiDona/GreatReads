@@ -17,29 +17,40 @@ class BooksController < ApplicationController
 
 	def create
 		book = Book.new
+
+		# @b = Book.books_searches_via_goodreads(params[:book][:title])
+		# redirect_to book
+		# info = book_via_goodreads(@b)
+
+		redirect_to books_path unless (params[:book][:title]).present?
 		info = book_via_goodreads(params[:book][:title])
-		# book.author = author.name
-		book.title = info['title']
-		book.isbn = info['isbn']
-		book.publisher = info['publisher']
-		book.year = info['publication_year']
-		book.image = info['image_url']
-		book.save
+		if info.present?
+			# book.author = author.name
+			book.title = info['title']
+			book.isbn = info['isbn']
+			book.publisher = info['publisher']
+			book.year = info['publication_year']
+			book.description = info['description'] if info['description'].present?
+			book.image = info['image_url']
+			book.save
 
-		author = Author.find_by :id => params[:book][:author_id]
-		if author.present?
-			author.books << book
-		else
-			begin
-				id = info.authors.first[1].id
-			rescue
-				id = info.authors.first[1].first['id']
+			author = Author.find_by :id => params[:book][:author_id]
+			if author.present?
+				author.books << book
+			else
+				begin
+					id = info.authors.first[1].id
+				rescue
+					id = info.authors.first[1].first['id']
+				end
+				author = Author.populate_author_via_goodreads(id)
+				author.books << book
 			end
-			author = Author.populate_author_via_goodreads(id)
-			author.books << book
-		end
 
-		redirect_to book
+			redirect_to book
+		else
+			redirect_to books_path
+		end
 	end
 
 	def edit
@@ -61,11 +72,11 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:title, :publisher, :year, :image, :isbn, :author_id)
+		params.require(:book).permit(:title, :publisher, :year, :image, :isbn, :description, :author_id)
 	end
 
 	def book_via_goodreads(title)
-		$good_reads_client.book_by_title(title)
+		$good_reads_client.book_by_title(title)	
 	end
 
 

@@ -9,19 +9,19 @@
 <%= form_for @user do |f| %>
 	<p>
 		<%= f.label :email %>
-		<%= f.email_field :email, :required => true %>
+		<%= f.email_field :email, :required => true, placeholder: "your email address" %>
 	</p>
 	<p>
 		<%= f.label :name %>
-		<%= f.text_field :name, :required => true %>
+		<%= f.text_field :name, :required => true, placeholder: "your name" %>
 	</p>
 	<p>
 		<%= f.label :password %>
-		<%= f.password_field :password %>
+		<%= f.password_field :password, placeholder: "your password" %>
 	</p>
 	<p>
 		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
+		<%= f.password_field :password_confirmation, placeholder: "retype password" %>
 	</p>
 	<%= f.submit :class => 'submit' %>
 <% end %>

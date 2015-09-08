@@ -13,23 +13,17 @@ html {
 	border-radius: 5px;
 }
 
-.middle {
-	position: absolute;
-	padding-left: 40px;
-}
-.links {
-	position: relative;
-	left: 700px;
-}
-
 input {
 	padding: 10px;
 	margin: 5px;
 	border-radius: 5px;
+	font-size: 0.9em;
+	color: rgb(73,141,181);
 }
 
 input:hover {
 	background-color: gray;
+	color: white;
 }
 
 label {
@@ -37,42 +31,32 @@ label {
 	margin: 5px;
 	border-radius: 5px;
 }
+.form {
+	padding: 50px;
+}
 
 .submit {
-	position: relative;
 	margin: 20px;
-	margin-left: 100px;
-	padding: 10px;
+	margin-left: 300px;
+	padding: 5px;
 }
 
 .index {
-	padding: 15px;
-	margin: 10px;
-}
-
-.showbooks {
-	padding: 15px;
-	margin: 10px;
-}
-
-.picture {
-	position: absolute;
-}
-
-.info {
-	position: relative;
-	left: 200px;
-	padding: 10px;
+	width: 400px;
+	margin: 0 auto;
 }
 
 .infoshow {
-	position: relative;
-	left: 400px;
+	background: white;
 	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 10px 10px 0 lightslategray, inset 10ps 5px 25px gainsboro, inset 10px 5ps 0 lavender;
 }
 
-.book {
-	padding: 20px;
+.genre:hover {
+	background-color: gray;
+	border-radius: 5px;
 }
 
 nav {
@@ -91,27 +75,31 @@ p {
 
 a {
 	text-decoration: none;
+	color: rgb(149,20,67);
 }
 
 a:hover {
 	font-size: 1.2em;
+	color: rgb(73,141,181);
 	transition: font-size 0.6s ease;
+
 }
 
 ul {
 	list-style: none;
 
 }
- .black{
- 	color: blue;
- 	font-size: 1.2em
- }
-
-/*li {
-	display: inline;
+ 
+li {
+	/*display: inline;*/
 	margin: 10px;
+	list-style: none;
 }
-*/
+
+.controls li {
+	display: inline;
+}
+
 img {
 	border: 1px solid black;
 }
@@ -127,7 +115,8 @@ img {
 }
 
 label {
-	min-width: 120px;
+	min-width: 230px;
 	display: inline-block;
 	text-align: right;
+	color: blue;
 }

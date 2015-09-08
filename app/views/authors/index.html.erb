@@ -6,10 +6,10 @@
 		</div>
 		<div class="info">
 			<p>Name: <%= link_to author.name, author %></p>
-			<p>Pen Name: <%= author.pen_name %></p>
-			<p>Nationality: <%= author.nationality %></p>
-			<p>Date of birth: <%= author.dob.strftime "%A, %e %B %Y" if author.dob %></p>
-			<p>Date of death: <%= author.dod.strftime "%A, %e %B %Y" if author.dod %></p>
+			<% if author.pen_name.present? %><p>Pen Name: <%= author.pen_name %></p><% end %>
+			<% if author.nationality.present? %><p>Nationality: <%= author.nationality %></p><% end %>
+			<% if author.dob.present? %><p>Date of birth: <%= author.dob.strftime "%A, %e %B %Y" if author.dob %></p><% end %> 
+			<% if author.dod.present? %><p>Date of death: <%= author.dod.strftime "%A, %e %B %Y" if author.dod %></p><% end %> 
 		</div>	
 	</div>
 		

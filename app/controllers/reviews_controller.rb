@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
  #  	before_action :check_if_admin, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
 
 	def index
+		@reviews = Review.all
 	end
 
 	def show
