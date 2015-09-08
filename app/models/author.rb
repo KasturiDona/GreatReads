@@ -24,4 +24,16 @@ class Author < ActiveRecord::Base
             name
         end
     end
+
+    def self.populate_author_via_goodreads(id)
+        info = $good_reads_client.author id
+        author = Author.new
+        author.name = info['name']
+        author.dob = info['born_at']
+        author.dod = info['died_at']
+        author.image = info['image_url']
+        author.save
+
+        author
+    end
 end

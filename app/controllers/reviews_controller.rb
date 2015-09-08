@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
 	def new
 		@review = Review.new
 		@book = Book.find params[:book_id]
+		@url = book_reviews_path(@book)
 	end
 
 	def create
@@ -26,18 +27,19 @@ class ReviewsController < ApplicationController
 
 	def edit
 		@review = Review.find params[:id]
+		@url = book_review_path(@review.book.id, @review.id)
 	end
 
 	def update
 		review = Review.find params[:id]
 		review.update review_params
-		redirect_to review
+		redirect_to reviews_path
 	end
 
 	def destroy
 		review = Review.find params[:id]
 		review.destroy
-		redirect_to(:back)
+		redirect_to reviews_path
 	end
 
 	private

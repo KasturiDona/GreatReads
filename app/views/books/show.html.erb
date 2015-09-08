@@ -4,13 +4,36 @@
 	<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
 
-<ul>Genre(s):
-  <% @book.genres.each do |genre| %>
-      <li>
-        <%= genre.name %>
-      </li>
-  <% end %>
-</ul>
+<div class="middle">
+	<ul class="main"><span class="black">Readings</span>
+		<% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
+			<li><%= (reading.status).gsub("_", " ").capitalize %></li>
+		<% end %>
+	</ul>
+	<ul class="main"><span class="black">Reviews</span>
+		<% @book.reviews.each do |review| %>
+			<li><%= review.description %>
+			<% if review.rating %>
+				( Rating:<%=  review.rating %> )
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+<div class="links">
+	<% if @current_user.present? %>
+	<p><%= link_to 'Add New Reading', new_book_reading_path(@book) %></p>
+	<% else %>    
+	<p><%= link_to 'Add New Review', login_path,  :data => { :confirm => "Please login" } %></p>
+	<% end %>
+
+	<% if @current_user.present? %>
+	<p><%= link_to 'Add New Review', new_book_review_path(@book) %></p>
+	<% else %>    
+	<p><%= link_to 'Add New Reading', login_path,  :data => { :confirm => "Please login" } %></p>
+	<% end %>
+</div>
 
 <div class="triviabox">
 	<div class="thumbnail">
@@ -19,6 +42,10 @@
 			<p>Year: <%= @book.year %></p>
 			<p>Publisher: <%= @book.publisher %></p>
 			<p>ISBN: <%= @book.isbn %></p>
+			<p>Genre(s):
+				  <% @book.genres.each do |genre| %>
+				       <li><%= genre.name %></li>
+				  <% end %></p>
 		</div>
 
 		<div class="thumbnailImage">
@@ -27,28 +54,9 @@
 	</div>
 </div>
 
-<p>Readings: </p>
-<% @book.readings.where(:user_id => @current_user.id).each do |reading| %>
-	<%= (reading.status).gsub("_", " ").capitalize %>
-<% end %>
 
-<p>Reviews: </p>
-<% @book.reviews.each do |review| %>
-	<%= review.description %>
-	<%= review.rating %>
-<% end %>
 
-<% if @current_user.present? %>
-    <p><%= link_to 'Add New Reading', new_book_reading_path(@book) %></p>
-<% else %>    
-    <p><%= link_to 'Add New Review', login_path,  :data => { :confirm => "Please login" } %></p>
-<% end %>
 
-<% if @current_user.present? %>
-    <p><%= link_to 'Add New Review', new_book_review_path(@book) %></p>
-<% else %>    
-    <p><%= link_to 'Add New Reading', login_path,  :data => { :confirm => "Please login" } %></p>
-<% end %>
 
 <% if @current_user.admin? %>
 

@@ -1,9 +1,11 @@
 <h2>Readings</h2>
-<% @readings.each do |reading| %>
-<ul>
-	<li><%= link_to(reading.book.title, reading.book) %></li>
-	<li><%= (reading.status).gsub("_", " ").capitalize %></li>
-	<li><%= link_to 'Edit', edit_book_reading_path(reading.book, reading) %></li>
-	<li><%= link_to 'Delete', reading, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
-</ul>
+<% if (@current_user || @current_user.admin?) %>
+	<% @readings.each do |reading| %>
+	<ul>
+		<li>Book: <%= link_to(reading.book.title, reading.book) %></li>
+		<li>Reading Status: <%= (reading.status).gsub("_", " ").capitalize %></li>
+		<li><%= link_to 'Edit', edit_book_reading_path(reading.book, reading) %></li>
+		<li><%= link_to 'Delete', book_reading_path(reading.book.id, reading.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+	</ul>
+	<% end %>
 <% end %>

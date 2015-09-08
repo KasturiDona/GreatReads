@@ -1,2 +1,14 @@
 <h2>New Book</h2>
-<%= render :partial => 'form' %>
+<%= form_for @book do |f| %>
+<p>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+</p>
+
+<p>
+	<label>Author</label>
+	<%= f.select :author_id, Author.all.map { |author| [ author.name, author.id ] }, :include_blank => true %>
+</p>
+
+<%= f.submit %>
+<% end %>

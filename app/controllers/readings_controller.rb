@@ -14,25 +14,26 @@ class ReadingsController < ApplicationController
 	def new
 		@reading = Reading.new
 		@book = Book.find params[:book_id]
+		@url = book_readings_path(@book)
 	end
 
 	def create
 		book = Book.find params[:book_id]
-
 		reading = book.readings.find_or_create_by :user_id => @current_user.id
 		reading.update :status => params[:reading][:status]
-
+		
 		redirect_to book
 	end
 
 	def edit
 		@reading = Reading.find params[:id]
+		@url = book_reading_path(@reading.book.id, @reading.id)
 	end
 
 	def update
 		reading = Reading.find params[:id]
 		reading.update reading_params
-		redirect_to reading
+		redirect_to readings_path
 	end
 
 	def destroy

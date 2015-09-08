@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
 
-	before_action :check_if_logged_in, :only => [:index]
-  	before_action :check_if_admin, :only => [:show, :edit, :update, :destroy, :new, :create]
+	before_action :check_if_logged_in, :only => [:index, :show]
+  	before_action :check_if_admin, :only => [:edit, :update, :destroy, :new, :create]
 	
 	def index
 		@genres = Genre.all

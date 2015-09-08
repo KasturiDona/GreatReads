@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
   	before_action :check_if_admin, :only => [:edit, :update, :destroy, :new, :create]
 
 	def index
-		@authors = Author.all
+		@authors = Author.order(:name)
 	end
 
 	def show

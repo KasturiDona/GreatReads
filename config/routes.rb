@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 		resources :reviews, :readings
 	end
 
-	resources :authors, :books, :readings, :reviews, :genres, :users #, :except => [:edit]
+	# Clobber reviews, readings
+	resources :authors, :genres, :users #, :except => [:edit]
+	resources :readings, :reviews, :only => [:index]
 
 	get '/login' => 'session#new'
 	post '/login' => 'session#create'

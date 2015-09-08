@@ -9,23 +9,28 @@
 		<%= image_tag @author.image, :class => 'feature' %>
 	</div>
 	<div class="infoshow">
+	<% if @author.nationality != "" %>
 		<p>Nationality: <%= @author.nationality %></p>
+	<% end %>
+	<% if @author.dob != "" %>
 		<p>Date of birth: <%= @author.dob.strftime "%A, %e %B %Y" if @author.dob %></p>
+	<% end %>
+	<% if @author.dod != "" %>
 		<p>Date of death: <%= @author.dod.strftime "%A, %e %B %Y" if @author.dod %></p>
+	<% end %>
+	<br>
+	<% @author.books.each do |book| %>
+		<%= link_to(image_tag(book.image, :class => 'thumb'), book) %>
+	<% end %>
+	<br>
 
-		<br>
-		<% @author.books.each do |book| %>
-			<%= link_to(image_tag(book.image, :class => 'thumb'), book) %>
-		<% end %>
-		<br>
-
-		<% if @current_user.admin? %>
-		<div class="controls">
-			<li><%= link_to 'Edit', edit_author_path(@author) %></li>
-			<li><%= link_to 'Delete', @author, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
-			<li><%= link_to 'Back', authors_path %></li>
-		</div>
-		<% end %>
+	<% if @current_user.admin? %>
+	<div class="controls">
+		<li><%= link_to 'Edit', edit_author_path(@author) %></li>
+		<li><%= link_to 'Delete', @author, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+		<li><%= link_to 'Back', authors_path %></li>
 	</div>
-	
+	<% end %>
+</div>
+
 </div>
