@@ -1,21 +1,13 @@
-<div class="form">
+
 <%= form_for @reading, :url => @url do |f| %>
 
-<p>
-	<label>Reading Status</label>
-	
 	<% Reading.statuses.each do |status, code| %>
-		<p>
+		<div class="form-group">
 			<%= label_tag status %>
 			<%= radio_button_tag "reading[status]", status %>
-		</p>
+		</div>
 	<% end %>
-</p>
 
-<%= f.submit :class => 'submit' %>
+<%= f.submit :class => 'submit btn btn-primary' %>
 
 <% end %>
-<div class="form">
-
-
-<!-- , :url => book_reading_path( @reading.book, @reading ) -->

@@ -24,9 +24,12 @@
 			<p>Date of death: <%= @author.dod.strftime "%A, %e %B %Y" if @author.dod %></p>
 		<% end %><br>
 
-		<% @author.books.each do |book| %>
-			<%= link_to(image_tag(book.image, :class => 'thumb'), book) %>
-		<% end %><br>
+		<ul class="bxslider">
+			<% @author.books.each do |book| %>
+				<li><%= link_to(image_tag(book.image, :class => 'thumb'), book) %></li>
+			<% end %>
+		</ul>
+		<br>
 
 		<% if @current_user.admin? %>
 			<div class="controls">
@@ -38,3 +41,9 @@
 	</div>
 
 </div>
+
+<script>
+	$('.bxslider').bxSlider({
+	  pagerCustom: '#bx-pager'
+	});
+</script>

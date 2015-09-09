@@ -1,0 +1,11 @@
+<h2>Book Search</h2>
+
+<%= form_tag books_results_path, :method => :get do |f| %>
+	<div class="form-group">
+		<%= label_tag :title %>
+		<%= text_field_tag :title, nil, placeholder: "Book title", :required => true, :class=> "form-control"  %>
+	</div>
+
+	<%= submit_tag "Search", :class => 'submit btn btn-primary' %>
+<% end %>
+

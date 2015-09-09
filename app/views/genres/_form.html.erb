@@ -1,12 +1,11 @@
-<div class="form">
+<h2>Add Genre</h2>
 <%= form_for @genre do |f| %>
 
-<p>
+<div class="form-group">
 	<%= f.label :name %>
-	<%= f.text_field :name, placeholder: "Add a genre" %>
-</p>
+	<%= f.text_field :name, placeholder: "Add a genre", :class=> "form-control" %>
+</div>
 
-<%= f.submit :class => 'submit' %>
+<%= f.submit :class => 'submit btn btn-primary' %>
 
 <% end %>
-<div class="form">

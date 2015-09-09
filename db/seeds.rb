@@ -23,8 +23,6 @@ Review.destroy_all
 rev1 = Review.create :description => "Very Good"
 rev2 = Review.create :description => "Boring"
 rev3 = Review.create :description => "Must Read"
-rev4 = Review.create :description => "Loved It"
-rev5 = Review.create :description => "Don't miss it"
 
 Reading.destroy_all
 read1 = Reading.create :status => 1

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 	# get '/readings/edit' => 'readings#edit', :as => :edit_reading
 	# get '/reviews/edit' => 'reviews#edit', :as => :edit_review
 
+	get '/books/search' => 'books#search'
+	get '/books/results' => 'books#results'
 	resources :books do
 		resources :reviews, :readings
 	end

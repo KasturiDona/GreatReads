@@ -11,7 +11,10 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new user_params
+		response = Cloudinary::Uploader.upload params[:file]
+		user_details = user_params
+		user_details["image"] = response["url"]
+		@user = User.new user_details
 		if @user.save
 			redirect_to root_path
 		else
@@ -24,8 +27,11 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		response = Cloudinary::Uploader.upload params[:file]
 		@user = @current_user
-		if @user.update user_params
+		user_details = user_params
+		user_details["image"] = response["url"]
+		if @user.update user_details
 			redirect_to root_path
 		else
 			render :edit

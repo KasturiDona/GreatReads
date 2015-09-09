@@ -32,6 +32,7 @@ class Author < ActiveRecord::Base
         author.dob = info['born_at']
         author.dod = info['died_at']
         author.image = info['image_url']
+        author.good_reads_author_id = info['id']
         author.save
 
         author

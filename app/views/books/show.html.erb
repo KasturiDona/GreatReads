@@ -4,8 +4,6 @@
 	<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
 
-
-
 <div class="links">
 	<% if @current_user.present? %>
 	<p><%= link_to 'Add New Reading', new_book_reading_path(@book) %></p>
@@ -39,11 +37,12 @@
 	</div>
 </div>
 
+
 <div id="accordion">
 
 	<% if @book.description.present? %>
 		<h3>Description</h3>
-		<p><%= (@book.description).gsub("<br><br>", " ") %></p>
+		<p><%= (@book.description).gsub(/<\/?\w+\s?>/, " ") %></p>
 	<% end %>
 
 	<!-- <div class="middle"> -->
@@ -58,10 +57,13 @@
 		<% if @book.reviews.present? %>
 			<h3>Reviews</h3>
 			<% @book.reviews.each do |review| %>
-				<ul>User: <%= review.user_id %>
+				<ul>User: <%= review.user.name %>
 					<li><%= review.description %>
 						<% if review.rating %>
 							( Rating:<%=  review.rating %> )
+							<% if review.rating > 2 %>
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+							<% end %>
 						<% end %>
 					</li>
 				</ul>
