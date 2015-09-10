@@ -8,7 +8,7 @@
 	
 	<div class="form-group">
 		<%= f.label :rating %>
-		<%= f.number_field :rating, in: 1..5, placeholder: "Rate the book ( 0 - 5 )", :class=> "form-control" %>
+		<%= f.number_field :rating, in: 0..5, placeholder: "Rate the book ( 0 - 5 )", :class=> "form-control" %>
 	</div>
 
 	<%= f.submit :class => 'submit btn btn-primary'%>

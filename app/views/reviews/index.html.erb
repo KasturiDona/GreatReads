@@ -1,5 +1,9 @@
 
-<h2>Reviews (<%= @reviews.count %>)</h2>
+<% unless @current_user.admin? %>
+	<h2>Reviews (<%= @current_user.reviews.count %>)</h2>
+<% else %>
+	<h2>Reviews (<%= @reviews.count %>)</h2>
+<% end %>
 
 <!-- current user reviews -->
 <% unless @current_user.admin? %>
