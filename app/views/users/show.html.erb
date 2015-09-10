@@ -9,14 +9,14 @@
 		<p>Email: <%= @user.email %></p>
 		<p>Readings</p>
 		<% @user.readings.each do |reading| %>
-			<ul><%= reading.book.title %>:->
+			<ul><%= link_to(reading.book.title, reading.book) %>:->
 				<li> <span class="color-blue"><%= reading.status.gsub("_", " ").capitalize %></span></li>
 			</ul>
 		<% end %>
 		<br>
 		<p>Reviews and ratings</p>
 		<% @user.reviews.each do |review| %>
-			<ul><%= review.book.title %>:-> 
+			<ul><%= link_to(review.book.title, review.book) %>:-> 
 				<li> <span class="color-blue"><%= review.description %></span></li>
 				<% if review.rating %>
 					<span class="color-blue">( Rating:<%=  review.rating %> )</span>
