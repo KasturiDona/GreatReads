@@ -1,4 +1,7 @@
+
 <h2>Reviews (<%= @reviews.count %>)</h2>
+
+<!-- current user reviews -->
 <% unless @current_user.admin? %>
 
 	<% @current_user.reviews.each do |review| %>
@@ -22,6 +25,8 @@
 	</ul>
 
 <% end %>
+
+<!-- all user reviews are available to the admin -->
 
 <% if @current_user.admin? %>
 

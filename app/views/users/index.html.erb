@@ -1,3 +1,4 @@
+<!-- list of users available to admin. Admin can send emails to all the users -->
 <% @users.each do |user| %>
 	<ul>
 		<li><%= link_to(user.name, user_path(user)) + ' : ' %><a href="mailto:<%= user.email %>?subject=Great Reads&body=Hi there!%0D%0D%0D%0D%0D%0DSent from the Admin"><%= user.email %>  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>

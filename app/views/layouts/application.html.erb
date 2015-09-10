@@ -20,10 +20,14 @@
           </button>
           <a class="navbar-brand" href="/">GreatReads</a>
         </div>
+
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+
+          	<!-- glyphicon displays home icon -->
             <li><%= link_to( raw( "<span class='glyphicon glyphicon-home' aria-hidden='true'></span>" ), '/' ) %></li>
 
+			<!-- dropdown menu option for users to edit and view their profile -->
             <% if @current_user.present? %>
             	<li class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span></a>
@@ -33,15 +37,21 @@
 	              </ul>
 	            </li>
 	        
+	        <!-- admins can view all user profiles -->
 	        <% if @current_user.admin? %>
 	            <li><%= link_to "View User Profiles", users_path %></li>
 	        <% end %>
-	            
+	        
+	        <!-- logout option for all users when logged in -->
 	        <li><%= link_to "Logout #{ @current_user.name }", login_path, :method => 'delete', :data => { :confirm => 'Are you sure you want to logout?' } %></li>
+
+	        <!-- otherwise link to either create a new account or to login for existing user -->
 	        <% else %>
 				<li><%= link_to 'Create Account', new_user_path %></li>
 				<li><%= link_to 'Login', login_path %></li>
 			<% end %>
+
+			<!-- for a user who is logged in as admin the menu options available in the database -->
 			<% if @current_user.present? %>
 			<% if @current_user.admin? %>
 	            <li class="dropdown">
@@ -60,6 +70,7 @@
 	              </ul>
 	            </li>
 	         
+	           <!-- for a user who is logged in but not an admin -->
 	           <% else %>
 	           	  <li class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Database <span class="caret"></span></a>
@@ -74,6 +85,8 @@
 	           <% end %>
 	           <% end %>
           </ul>
+
+          <!-- user image and a welcome note -->
           <ul class="nav navbar-nav navbar-right">
           	<div class="space">
             <li class="active"><%= image_tag @current_user.image if @current_user %><%= " Welcome back #{ @current_user.name }!" if @current_user.present? %><span class="sr-only">(current)</span></a></li>

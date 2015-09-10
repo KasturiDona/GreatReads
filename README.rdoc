@@ -5,21 +5,21 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : v2.2.3
 
-* System dependencies
+* System dependencies : postgresql, goodreads API, cloudinary, bootstrap, jquery-ui, bycrypt, heroku
 
 * Configuration
 
-* Database creation
+* Database creation : required ( books, authors, genres, reviews, readings, users, password-digest, books-genres, admin-users, goodreads_author_id-authors)
 
-* Database initialization
+* Database initialization : seeds.rb
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+* Services (job queues, cache servers, search engines, etc.) : goodreads API to search for books by title and add a book alongwith the author to the database if not present already
 
-* Deployment instructions
+* Deployment : heroku
 
 * ...
 

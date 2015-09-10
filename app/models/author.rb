@@ -24,7 +24,8 @@ class Author < ActiveRecord::Base
             name
         end
     end
-
+    
+    # get author details by their goodreads author id (API)
     def self.populate_author_via_goodreads(id)
         info = $good_reads_client.author id
         author = Author.new

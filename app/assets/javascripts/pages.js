@@ -1,3 +1,5 @@
+// To toggle between the elements in the navbar
+
 $(document).ready(function () {   
 
 	var currentURL = window.location.pathname;

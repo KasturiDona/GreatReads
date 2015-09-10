@@ -1,3 +1,5 @@
+<!-- displays list of reading to its user and to the admin. They have access to edit / delete the reading -->
+
 <h2>Readings(<%= @readings.count %>)</h2>
 <% if (@current_user || @current_user.admin?) %>
 	<% @readings.each do |reading| %>

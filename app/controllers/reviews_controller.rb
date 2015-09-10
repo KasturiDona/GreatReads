@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
 	before_action :check_if_logged_in, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
- #  	before_action :check_if_admin, :only => [:index, :show, :edit, :update, :destroy, :new, :create]
 
 	def index
 		@reviews = Review.all
@@ -11,16 +10,16 @@ class ReviewsController < ApplicationController
 		@review = Review.find params[:id]
 	end
 
+	# creating a new book review requires the book id
 	def new
 		@review = Review.new
 		@book = Book.find params[:book_id]
-		@url = book_reviews_path(@book)
+		@url = book_reviews_path(@book) 
 	end
 
 	def create
 		review_parameters = review_params
-		review = @current_user.reviews.create review_parameters
-		
+		review = @current_user.reviews.create review_parameters	
 		book = Book.find params[:book_id]
 		book.reviews << review
 		redirect_to book
@@ -44,6 +43,8 @@ class ReviewsController < ApplicationController
 	end
 
 	private
+
+	# white-listing review parameters for a safe transmission
 	def review_params
 		params.require(:review).permit(:description, :rating, :book_id, :user_id)
 	end
@@ -51,8 +52,4 @@ class ReviewsController < ApplicationController
 	def check_if_logged_in
 		redirect_to root_path unless @current_user.present?
 	end
-
-	# def check_if_admin
-	# 	redirect_to root_path unless @current_user.present? && @current_user.admin?
-	# end
 end

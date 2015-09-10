@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	# while creating a new account a user can upload an image via cloudinary
 	def create
 		user_details = user_params
 		@user = User.new user_details
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 			user_details["image"] = response["url"]
 		end
 
+		# a user is directly logged in once he/she creates an account
 		if @user.save
   			session[:user_id] = @user.id
   			redirect_to root_path
@@ -35,6 +37,7 @@ class UsersController < ApplicationController
 		@user = @current_user
 	end
 
+	# editing user profile
 	def update
 		@user = @current_user
 		user_details = user_params
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	# white-listing of current user params
 	private
 	def user_params
 		params.require(:user).permit(:email, :name, :password, :password_confirmation)

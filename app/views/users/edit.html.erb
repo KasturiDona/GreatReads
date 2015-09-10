@@ -1,5 +1,6 @@
 <h2>Edit your profile</h2>
 
+<!-- error messages displayed here when a user does not put in correct information while logging in -->
 <% if @user.errors.any? %>
 	<ol>
 		<% @user.errors.full_messages.each do |msg| %>

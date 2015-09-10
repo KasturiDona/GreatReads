@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 	get '/books/search' => 'books#search'
 	get '/books/results' => 'books#results'
+
 	resources :books do
 		resources :reviews, :readings
 	end

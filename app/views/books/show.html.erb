@@ -1,9 +1,12 @@
-
+<!-- Book details displayed here -->
 <h2><%= @book.title %></h2>
+
+<!-- link to its author -->
 <% if @book.author %>
 	<h2>Author: <%= link_to @book.author.name, @book.author %></h2>
 <% end %>
 
+<!-- allows current user to add a reading and review and rate the book -->
 <div class="links">
 	<% if @current_user.present? %>
 	<p><%= link_to 'Add your Reading', new_book_reading_path(@book) %> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></p>
@@ -18,6 +21,7 @@
 	<% end %>
 </div>
 
+<!-- displays book image. On mousehover, it displays book information -->
 <div class="triviabox">
 	<div class="thumbnail">
 		<div class="overlayInfo">
@@ -25,6 +29,8 @@
 			<p>Year: <%= @book.year %></p>
 			<p>Publisher: <%= @book.publisher %></p>
 			<p>ISBN: <%= @book.isbn %></p>
+
+			<!-- pluralizes / singularizes 'genre' -->
 			<p><%= pluralize(@book.genres.count, 'Genre') %>:
 				  <% @book.genres.each do |genre| %>
 				       <li><%= genre.name %></li>
@@ -38,6 +44,8 @@
 </div>
 
 <div class="details">
+
+<!-- jquery accordian function used here. Allows uses to switch between book description (from goodreads api, current user reading and all user reviews/ratings) -->
 <div id="accordion">
 
 	<% if @book.description.present? %>
@@ -62,6 +70,8 @@
 					<li><%= review.description %>
 						<% if review.rating %>
 							( Rating:<%=  review.rating %> )
+
+							<!-- if user rates a book 3 and above, it displays the thumbs-up glyphicon(bootstrap) -->
 							<% if review.rating > 2 %>
 								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 							<% end %>
@@ -76,6 +86,7 @@
 </div>
 </div>
 
+<!-- admin can edit/delete a book -->
 <% if @current_user.admin? %>
 	<div class="controls">
 		<li><%= link_to 'Edit', edit_book_path(@book) %></li>
@@ -87,8 +98,10 @@
 	<li><%= link_to 'Back', books_path %></li>
 </div>
 
+<!-- timestamp of the book creation -->
 <p>Created : <%= time_ago_in_words(@book.created_at) %> ago</p>
 
+<!-- calls the accordian function -->
 <script>
 	$("#accordion").accordion();
 </script>

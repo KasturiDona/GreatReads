@@ -1,3 +1,5 @@
+# all methods for the authors model is defined here
+
 class AuthorsController < ApplicationController
 	before_action :check_if_logged_in, :only => [:index, :show]
   	before_action :check_if_admin, :only => [:edit, :update, :destroy, :new, :create]
