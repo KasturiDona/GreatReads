@@ -10,4 +10,10 @@
 
 class Genre < ActiveRecord::Base
 	has_and_belongs_to_many :books
+	validates_uniqueness_of :name, :case_sensitive => false
+	before_save :capitalize_genre
+
+	def capitalize_genre
+		self.name = self.name.capitalize
+	end
 end

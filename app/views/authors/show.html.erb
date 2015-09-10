@@ -5,8 +5,9 @@
     <h2><%= @author.name %></h2>
 <% end %>
 
-<div class="index">
-	<div class="infoshow">
+
+<div class="infoshow">
+	<div class="show">
 
 		<div class="picture">
 			<%= image_tag @author.image, :class => 'feature' %>
@@ -24,7 +25,7 @@
 			<p>Date of death: <%= @author.dod.strftime "%A, %e %B %Y" if @author.dod %></p>
 		<% end %><br>
 
-		<ul class="bxslider">
+		<ul>
 			<% @author.books.each do |book| %>
 				<li><%= link_to(image_tag(book.image, :class => 'thumb'), book) %></li>
 			<% end %>
@@ -33,17 +34,13 @@
 
 		<% if @current_user.admin? %>
 			<div class="controls">
-				<li><%= link_to 'Edit', edit_author_path(@author) %></li>
-				<li><%= link_to 'Delete', @author, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
-				<li><%= link_to 'Back', authors_path %></li>
+				<ul>
+					<li><%= link_to 'Edit', edit_author_path(@author) %></li>
+					<li><%= link_to 'Delete', @author, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+					<li><%= link_to 'Back', authors_path %></li>
+				</ul>
 			</div>
 		<% end %>
 	</div>
 
 </div>
-
-<script>
-	$('.bxslider').bxSlider({
-	  pagerCustom: '#bx-pager'
-	});
-</script>

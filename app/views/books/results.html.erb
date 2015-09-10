@@ -1,5 +1,9 @@
-<% @books.each do |book| %>
-	<p>
-		<%= link_to(book[:title], books_path(:good_reads_id => book[:good_reads_id]), :method => :post) %>
-	</p>
+<% if @books.any? %>
+	<% @books.each do |book| %>
+		<p>
+			<%= link_to(book[:title], books_path(:good_reads_id => book[:good_reads_id]), :method => :post) %>
+		</p>
+	<% end %>
+<% else %>
+	<h2>Error !!!</h2>
 <% end %>

@@ -1,4 +1,4 @@
-<h2>Add Genre</h2>
+
 <%= form_for @genre do |f| %>
 
 <div class="form-group">
@@ -9,3 +9,7 @@
 <%= f.submit :class => 'submit btn btn-primary' %>
 
 <% end %>
+
+<div class="controls">
+	<p><%= link_to 'Back', genres_path %></p>
+</div>

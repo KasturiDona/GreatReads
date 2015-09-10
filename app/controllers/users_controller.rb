@@ -6,17 +6,26 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def show
+		@user = User.find params[:id]
+		# binding.pry
+	end
+
 	def new
 		@user = User.new
 	end
 
 	def create
-		response = Cloudinary::Uploader.upload params[:file]
 		user_details = user_params
-		user_details["image"] = response["url"]
 		@user = User.new user_details
+		if params[:file]
+			response = Cloudinary::Uploader.upload params[:file]
+			user_details["image"] = response["url"]
+		end
+
 		if @user.save
-			redirect_to root_path
+  			session[:user_id] = @user.id
+  			redirect_to root_path
 		else
 			render :new
 		end
@@ -27,15 +36,23 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		response = Cloudinary::Uploader.upload params[:file]
 		@user = @current_user
 		user_details = user_params
-		user_details["image"] = response["url"]
+		if params[:file]
+			response = Cloudinary::Uploader.upload params[:file]
+			user_details["image"] = response["url"]
+		end
 		if @user.update user_details
-			redirect_to root_path
+			redirect_to @user
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		user = User.find params[:id]
+		user.destroy unless user.admin?
+		redirect_to root_path
 	end
 
 	private

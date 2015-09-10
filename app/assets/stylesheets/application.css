@@ -1,0 +1,234 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require_tree .
+ *= require_self
+ */
+
+ @import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+body {
+	padding-top: 70px;
+	background-image: url("http://i.imgur.com/ijo8KeK.jpg");
+	background-size: cover;
+	font-family: 'Architects Daughter', cursive;
+}
+
+.space img {
+	height: 50px;
+}
+
+input:hover {
+	background-color: gray;
+	color: white;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	padding: 2px;
+	font-size: 0.8em;
+}
+.overlayInfo p {
+	font-size: 1.2em;
+}
+
+
+a {
+	text-decoration: none;
+	color: rgb(149,20,67);
+}
+
+a:hover {
+	text-decoration: none;
+	font-size: 1.2em;
+	color: rgb(73,141,181);
+	transition: font-size 0.6s ease;
+
+}
+
+.color-blue {
+	color: blue;
+}
+
+.index {
+	width: 150px;
+	margin: 0 auto;
+}
+
+.show {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.infoshow {
+	background: #F0DDD2;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 10px 10px 0 #D8C7BD;
+}
+
+.picture img {
+	margin: 10px;
+}
+
+.picture p {
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+}
+.show li {
+	list-style: none;
+	display: inline;
+}
+
+.controls li {
+	display: inline;
+	font-size: 1.2em;
+	color: rgb(73,141,181);
+	transition: font-size 0.6s ease;
+	margin: 10px;
+}
+
+img {
+	box-shadow: 5px 5px 0 gray;
+	border-radius: 5%;
+}
+
+.thumb {
+	max-width: 8em;
+	border-radius: 50%;
+}
+
+.feature {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.profile_pic {
+	width: 50%;
+	border-radius: 5px;
+}
+
+.details {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.triviabox {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.thumbnail {
+	position: relative;
+	width: 280px;
+	margin: 0 auto;
+}
+
+.thumbnailImage {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	transition: all 0.6s ease;
+}
+
+.thumbnail .overlayInfo {
+	opacity: 0;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 10px;
+	left: 0 !important;
+	right: 0;
+	transition: opacity 0.6s ease;
+}
+
+.thumbnail .thumbnailImage img {
+	transition:  all 0.6s ease;
+}
+
+.thumbnail:hover .overlayInfo {
+	opacity: 1;
+}
+
+.thumbnail:hover .thumbnailImage {
+	width: 100%;
+}
+
+.thumbnail:hover .thumbnailImage img {
+	width: 100%;
+}
+
+.triviaboxindex {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.thumbnailindex {
+	position: relative;
+	width: 200px;
+	margin: 0 auto;
+}
+
+.thumbnailImageindex {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	transition: all 0.6s ease;
+}
+
+.thumbnailindex .overlayInfoindex {
+	opacity: 0;
+	position: absolute;
+	background: rgba(100, 100, 100, 0.6);
+	color: white;
+	padding: 10px;
+	left: -150px;
+	right: 200px;
+	top: 40px;
+	bottom: 40px;
+	transition: opacity 0.6s ease;
+}
+
+.thumbnailindex .thumbnailImageindex img {
+	transition:  all 0.6s ease;
+}
+
+.thumbnailindex:hover .overlayInfoindex {
+	opacity: 1;
+	border-radius: 10px;
+	color: white;
+}
+
+.overlayInfoindex a {
+	color: white;
+}
+
+.thumbnailindex:hover .thumbnailImageindex {
+	width: 100%;
+	height: 100%;
+	color: white;
+}
+
+.thumbnailindex:hover .thumbnailImageindex img {
+	width: 100%;
+}
+
+
+

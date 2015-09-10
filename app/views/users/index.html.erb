@@ -1,3 +1,5 @@
-<%= @users.each do |user| %>
-	<p><%= user.name + ' ' + user.email %></p>
+<% @users.each do |user| %>
+	<ul>
+		<li><%= link_to(user.name, user_path(user)) + ' : ' %><a href="mailto:<%= user.email %>?subject=Great Reads&body=Hi there!%0D%0D%0D%0D%0D%0DSent from the Admin"><%= user.email %>  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+	</ul>
 <% end %>

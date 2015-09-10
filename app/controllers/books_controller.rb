@@ -20,7 +20,7 @@ class BooksController < ApplicationController
 	end
 
 	def new
-			@book = Book.book_via_goodreads_id params[:good_reads_id]
+		@book = Book.book_via_goodreads_id params[:good_reads_id]
 	end
 
 	def create
@@ -56,7 +56,7 @@ class BooksController < ApplicationController
 				author.books << book
 			end	
 		end
-		redirect_to books_path
+		redirect_to book
 	end
 
 	def edit

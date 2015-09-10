@@ -1,7 +1,7 @@
-<h2>Genres</h2>
+<h2>Genres (<%= @genres.count %>)</h2>
 
 <% @genres.each do |genre| %>
 
-	<p><%= link_to genre.name, genre %></p>
+	<p><%= link_to genre.name, genre %>  (<%= genre.books.count %>)</p>
 	
 <% end %>

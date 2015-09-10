@@ -1,15 +1,16 @@
 <p><%= (@reading.status).gsub("_", " ").capitalize %></p>
 
 <% if @reading.book %>
-		<h2>Book: <%= link_to @reading.book.title, @reading.book %></h2>
+		<p>Book: <%= link_to @reading.book.title, @reading.book %></p>
 <% end %>
 
 <% if @reading.user %>
-		<h2>User name: <%= link_to @reading.user.name, @reading.user %></h2>
+		<p>User name: <%= @reading.user.name %></p>
 <% end %>
 
 <div class="controls">
-	<br><br>
-	<li><%= link_to 'Edit', edit_reading_path(@reading) %></li>
 	<li><%= link_to 'Delete', book_reading_path(@reading.book.id, @reading.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+	<li><%= link_to 'Back', readings_path %></li>
 </div>
+
+<p>Created : <%= time_ago_in_words(@reading.created_at) %> ago</p>

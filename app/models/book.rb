@@ -22,11 +22,13 @@ class Book < ActiveRecord::Base
 	def self.books_searches_via_goodreads(title)
 		search = $good_reads_client.search_books(title)
 		books = []
-		search.results.work.each do |book|      
-		  books << {
-		  	:title => book['best_book']['title'],
-		  	:good_reads_id => book['best_book'].id   
-		}
+		if (search.results).present?
+			search.results.work.each do |book|      
+			  books << {
+			  	:title => book['best_book']['title'],
+			  	:good_reads_id => book['best_book'].id   
+			}
+			end
 		end
 		books
 	end

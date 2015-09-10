@@ -1,20 +1,30 @@
-<p><%= @user.name %></p>
-<div class="index">
-	<div class="picture">
-		<%= image_tag @user.image, :class => 'feature' %>
-	</div>
-	<div class="infoshow">
+
+
+<div class="infoshow">
+	<div class="show">
+		<p>Name: <%= @user.name %></p>
+		<div class="picture">
+			<%= image_tag @user.image, :class => 'profile_pic' %>
+		</div>
 		<p>Email: <%= @user.email %></p>
-		
-		<br>
-		<% @user.readings.each do |book| %>
-			<%= link_to(reading.status, reading) %>
-			<%= link_to(reading.book.title, reading.book) %>
+		<p>Readings</p>
+		<% @user.readings.each do |reading| %>
+			<ul><%= reading.book.title %>:->
+				<li> <span class="color-blue"><%= reading.status.gsub("_", " ").capitalize %></span></li>
+			</ul>
 		<% end %>
 		<br>
-
-		<% @user.reviews.each do |book| %>
-			<%= link_to(review.description, review) %>
+		<p>Reviews and ratings</p>
+		<% @user.reviews.each do |review| %>
+			<ul><%= review.book.title %>:-> 
+				<li> <span class="color-blue"><%= review.description %></span></li>
+				<% if review.rating %>
+					<span class="color-blue">( Rating:<%=  review.rating %> )</span>
+					<% if review.rating > 2 %>
+						<span class="glyphicon glyphicon-thumbs-up color-blue" aria-hidden="true"></span>
+					<% end %>
+				<% end %>
+			</ul>
 		<% end %>
 		<br>
 
@@ -24,11 +34,6 @@
 			<li><%= link_to 'Edit', edit_user_path(@user) %></li>
 			<li><%= link_to 'Delete', @user, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
 			<li><%= link_to 'Back', users_path %></li>
-
-			<li><%= link_to 'Review a book', new_review_path %></li>
-			<li><%= link_to 'Read a book', new_reading_path %></li>
-
 		</div>
 	</div>
-	
 </div>

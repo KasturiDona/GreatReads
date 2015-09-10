@@ -9,8 +9,11 @@
 		<h2>User name: <%= link_to @review.user.name, @review.user %></h2>
 <% end %>
 
-	<div class="controls">
-		<br><br>
-		<li><%= link_to 'Edit', edit_review_path(@review) %></li>
-		<li><%= link_to 'Delete', @review, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
-	</div>
+<div class="controls">
+	<li><%= link_to 'Edit', edit_review_path(@review) %></li>
+	<li><%= link_to 'Delete', @review, :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
+</div>
+
+<ul><%= link_to 'Back', '/' %></ul>
+
+<p>Created : <%= time_ago_in_words(@review.created_at) %> ago</p>

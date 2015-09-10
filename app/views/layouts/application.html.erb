@@ -22,11 +22,22 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to 'Home', '/' %></li>
+            <li><%= link_to( raw( "<span class='glyphicon glyphicon-home' aria-hidden='true'></span>" ), '/' ) %></li>
+
             <% if @current_user.present? %>
+            	<li class="dropdown">
+	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span></a>
+	              <ul class="dropdown-menu">
+	              	<li><%= link_to "Edit Profile", edit_user_path( @current_user ) %></li>
+					<li><%= link_to 'View Profile', user_path( @current_user ) %></li>
+	              </ul>
+	            </li>
+	        
+	        <% if @current_user.admin? %>
+	            <li><%= link_to "View User Profiles", users_path %></li>
+	        <% end %>
 	            
-	            <li><%= link_to "Edit Profile", edit_user_path( @current_user ) %></li>
-	            <li><%= link_to "Logout #{ @current_user.name }", login_path, :method => 'delete', :data => { :confirm => 'Are you sure you want to logout?' } %></li>
+	        <li><%= link_to "Logout #{ @current_user.name }", login_path, :method => 'delete', :data => { :confirm => 'Are you sure you want to logout?' } %></li>
 	        <% else %>
 				<li><%= link_to 'Create Account', new_user_path %></li>
 				<li><%= link_to 'Login', login_path %></li>
@@ -43,7 +54,7 @@
 					<li><%= link_to 'Reviews', reviews_path %></li>
 	                <li role="separator" class="divider"></li>
 	                <li class="dropdown-header">Add New</li>
-	                <li><%= link_to 'Add Authors', new_author_path %></li>
+	                <li><%= link_to 'Edit Authors', authors_path %></li>
 					<li><%= link_to 'Add Books', books_search_path %></li>
 					<li><%= link_to 'Add Genres', new_genre_path %></li>
 	              </ul>
