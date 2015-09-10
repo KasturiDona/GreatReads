@@ -16,7 +16,7 @@ class BooksController < ApplicationController
 
   	# lists out all existing books in db by order of title
 	def index
-		@books = Book.order(:title)
+		@books = Book.all
 	end
 
 	# displays complete book details
