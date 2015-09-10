@@ -6,7 +6,9 @@
 	<div class="thumbnailindex">
 		<div class="overlayInfoindex">
 			<%= link_to book.title, book %>
-			<%= link_to book.author.name, book.author %>
+			<% if book.author %>
+				<%= link_to book.author.name, book.author %>
+			<% end %>
 		</div>
 
 		<div class="thumbnailImageindex">
