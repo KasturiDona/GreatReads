@@ -30,7 +30,7 @@
 
 <% end %>
 
-<!-- all user reviews are available to the admin -->
+<!-- all user reviews are available to the admin but admin can edit only his/her review page -->
 
 <% if @current_user.admin? %>
 
@@ -45,6 +45,9 @@
 			<% end %>
 			<li>Description: <%= review.description if review.description %></li>
 			<li>Created : <%= time_ago_in_words(review.created_at) %> ago</li>
+			<% if review.user == @current_user %>
+				<li><%= link_to 'Edit', edit_book_review_path(review.book, review) %></li>
+			<% end %>
 			<li><%= link_to 'Delete', book_review_path(review.book.id, review.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %></li>
 		</ul>
 	<% end %>
