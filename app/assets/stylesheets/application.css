@@ -107,6 +107,10 @@ ul {
 	margin: 10px;
 }
 
+li {
+	font-size: 1.2em;
+}
+
 img {
 	box-shadow: 5px 5px 0 gray;
 	border-radius: 5%;
